@@ -16,7 +16,7 @@ Extra
   - print_action
   - set_position
 
-The following is a naive environment that reads a rectangle shaped maze from file, where 'X' is block, 'O' is the reward place. 
+The following is a naive environment that reads a rectangle shaped maze from file, where 'X' is block, 'O' is the reward place.
 '''
 
 class Toy():
