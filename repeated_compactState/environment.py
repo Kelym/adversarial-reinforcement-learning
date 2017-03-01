@@ -117,8 +117,29 @@ class RandomMaze(object):
 	def update_ltq(self, xy):
 		x, y = xy
 
-		is_up = self.KB[:x,].sum() < self.KB[x+1:,].sum()
-		is_left = self.KB[:,:y].sum() < self.KB[:,y+1:].sum()
+        upper = self.KB[:x,]
+        upper_density = right.sum()
+        if not len(upper) == 0:
+            upper_density /= float(len(upper))
+
+        lower = self.KB[:x,]
+        lower_density = lower.sum()
+        if not len(lower) == 0:
+            lower_density /= float(len(lower))
+
+		is_upper = upper_density < lower_density
+
+        left = self.KB[:x,]
+        left_density = left.sum()
+        if not len(left) == 0:
+            left_density /= float(len(left))
+
+        right = self.KB[:x,]
+        right_density = right.sum()
+        if not len(right) == 0:
+            right_density /= float(len(right))
+
+		is_left = left_density < right_density
 
 		return 2 * is_up + is_left
 
