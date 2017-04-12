@@ -39,7 +39,7 @@ class AgentQLearn(object):
 
 			# we have reached the goal
 			# start over with new random maze
-			if reward == 200:
+			if reward == 100:
 				change_maze = True
 
 	def explore(self):
