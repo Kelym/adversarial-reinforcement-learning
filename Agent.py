@@ -6,11 +6,9 @@ import Environment
 class AgentQLearn():
   def __init__(self, env, curiosity, discount_rate = 0.9):
     self.env = env
-    self.Q = [ [random.random() * 0.5 for a in range(env.actions)] 
-                for s in range(env.states)]
+    self.Q = np.random.uniform(0,0.5,(env.states, env.actions))
     self.explore_chance = curiosity
     self.discount_rate = discount_rate
-    random.seed = 17
 
   def choose_optimal_action(self, state):
     """Select the action to maximize the expected gain at the given state
@@ -19,7 +17,7 @@ class AgentQLearn():
     actions = self.Q[state]
     optimal_gain = max(actions)
     optimal_actions = [i for i, j in enumerate(actions) if j == optimal_gain]
-    return optimal_actions[random.randrange(len(optimal_actions))]
+    return optimal_actions[np.random.randint(len(optimal_actions))]
     
   def learn(self, learning_rate, steps = 1000):
     """Do given steps of reinforcement Q learning
@@ -27,7 +25,7 @@ class AgentQLearn():
     state = self.env.observe()
     for step in range(steps):
       if self.explore() :
-        action = random.randrange(self.env.actions)
+        action = np.random.randint(self.env.actions)
       else:
         action = self.choose_optimal_action(state)
 
@@ -46,7 +44,7 @@ class AgentQLearn():
       state = new_state
 
   def explore(self):
-    return random.random() < self.explore_chance
+    return np.random.uniform() < self.explore_chance
 
   def print_policy(self):
     print(["{0:10}".format(i) for i in self.env.actions_name]) 
@@ -66,4 +64,4 @@ class AgentQLearn():
       reward = self.env.act(action)
       print("Gained ", reward)
       s = self.env.observe()
-      self.env.print_state(s)
+      self.env.print_position(s)
