@@ -18,11 +18,13 @@ curiosity = 0.4
 random.seed(13)
 
 maze = 'Mazes/2'
-start = (3,0)
 
-env = Environment.Toy(maze, start)
+env = Environment.SameMazeMultiShot()
+env.read_maze(maze)
 env.debug = 1
 agent = Agent.AgentQLearn(env, curiosity,discount_rate)
 
 agent.learn(learning_rate, learning_step)
-agent.print_policy((3,0))
+#agent.print_policy()
+env.set_position(3,0)
+agent.stimulate(10)
