@@ -62,6 +62,6 @@ class AgentQLearn():
       action = self.choose_optimal_action(s)
       self.env.print_action(action)
       reward = self.env.act(action)
-      print("Gained ", reward)
+      print("Gained ", reward, " => ", end=' ')
       s = self.env.observe()
       self.env.print_position(s)

@@ -120,7 +120,7 @@ class Toy():
 
   def print_position(self, state):
     cur = state % (self.xbound * self.ybound)
-    print (cur // self.ybound, cur % self.ybound, end=' ')
+    print (cur // self.ybound, cur % self.ybound)
 
   def print_maze(self):
     print('\n'.join(self.maze_pretty))
