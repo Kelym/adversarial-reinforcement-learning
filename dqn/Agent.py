@@ -72,7 +72,7 @@ class DQN(nn.Module):
 		return self.softmax(x)
 
 class AgentQLearn():
-	def __init__(self, env, curiosity=0.1, learning_rate=0.001, discount_rate = 0.9):
+	def __init__(self, env, curiosity=0.1, learning_rate=0.01, discount_rate = 0.9):
 		self.env = env
 		self.explore_chance = curiosity
 		self.discount_rate = discount_rate
@@ -85,10 +85,17 @@ class AgentQLearn():
 		self.criterion = nn.SmoothL1Loss()
 		self.optimizer = torch.optim.SGD(self.net.parameters(), lr=learning_rate)
 
-	def learn(self, nEpochs=10, mini_batch_size=100, nSteps=10000):
+	def learn(self, nEpochs=1, mini_batch_size=100, nSteps=200):
 		for epoch in range(nEpochs):
 			self.env = self.env.new_maze()
 			state = self.env.observe()
+			initial_state = state.copy()
+			for flag in initial_state:
+				print(flag)
+			initial_q_values = self.net(to_var(initial_state, volatile=True))
+			print(initial_q_values)
+
+
 
 			restart = False
 			for step in range(nSteps):
@@ -118,9 +125,14 @@ class AgentQLearn():
 					# Forward + Backward + Optimize
 					self.net.zero_grad()
 					q_values = self.net(to_var(state_batch, volatile=False))
+					
 					# Make volatile so that computational graph isn't affected
 					# by this batch of inputs
 					next_q_values = self.net(to_var(next_state_batch, volatile=True))
+
+					#print(q_values.data)
+					#print(next_q_values.data)
+
 
 					# change volatile flag back to false so that weight gradients will be calculated
 					next_q_values.volatile = False
@@ -135,6 +147,9 @@ class AgentQLearn():
 					restart = True
 
 				state = next_state
+
+			final_q_values = self.net(to_var(initial_state, volatile=True))
+			print(final_q_values)
 
 	# state is state as given by env; not necessarily in suitable format for network input
 	def policy(self,state):
@@ -153,6 +168,9 @@ class AgentQLearn():
 
 	def explore(self):
 		return random.random() < self.explore_chance
+
+	def test(self, nMazes):
+		pass
 
 	# TODO can't enumerate over states
 	'''

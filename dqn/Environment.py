@@ -42,8 +42,8 @@ class Toy(object):
 		self.maze = np.array(['X' if traps[i] else '' for i in range(self.nSquares)])
 
 		randoms = np.random.randint(self.nSquares, size=2)
-		start = randoms[0]
-		s_x = start / self.ybound
+		start = int(randoms[0])
+		s_x = int(start / self.ybound)
 		s_y = start % self.ybound
 
 		# initial starting position
@@ -103,7 +103,7 @@ class Toy(object):
 				
 				state_pos[i,j] = int(self.pos == (i,j))
 				state_trap[i,j] = int(self.maze[i,j] == 'X')
-				state_goal[i,j] = int(self.maze[i,j] == 'G')
+				state_goal[i,j] = int(self.maze[i,j] == 'O')
 
 		return np.array([state_pos,state_trap,state_goal])
 
