@@ -25,7 +25,7 @@ class Toy(object):
 		self.xbound, self.ybound = dims
 		self.nSquares = self.xbound * self.ybound
 
-        # total number of states; irrelevant now
+		# total number of states; irrelevant now
 		#self.states = self.nSquares * (2**4) * 4
 
 		self.actions = 4
@@ -58,16 +58,18 @@ class Toy(object):
 
 		self.debug = 0
 
-    def new_maze(self):
-        return Toy((self.xbound, self.ybound), self.trap_prob)
+	def dims(self):
+		return self.xbound, self.ybound
+
+	def new_maze(self):
+		return Toy((self.xbound, self.ybound), self.trap_prob)
 
 	def act(self, action):
 
-		x = self.state[0]
-		y = self.state[1]
+		x,y = self.pos
 
-		new_x = x + self.movement[action][0]
-		new_y = y + self.movement[action][1]
+		new_x = int(x + self.movement[action][0])
+		new_y = int(y + self.movement[action][1])
 
 		if(self.debug > 3):
 			print(x,' ',y,' + ', self.actions_name[action], ' -> ',new_x, ' ', new_y)
@@ -79,17 +81,31 @@ class Toy(object):
 			# Block
 			return -100, False
 
-		self.state = (new_x, new_y)
+		self.set_position((new_x, new_y))
 		if(self.maze[new_x][new_y] == 'O'):
 			# Target
 			return 100, True
 		# Punish for time passed
 		return -0.5, False
 
-	# TODO change state output to be array representation (e.g. self.maze)
 	def observe(self):
-		# The method will produce a single number representing distinct states
-		return self.state[0]*self.ybound + self.state[1];
+		# The method will produce a 3D array (self.dims x 3 flags)
+		# the three flags are as follows:
+		#	- 1 if square is current location of player
+		#	- 1 if square is trap
+		#	- 1 if square is goal 
+		x, y = self.maze.shape
+		state_pos = np.zeros((x,y),dtype=int)
+		state_trap = np.zeros((x,y),dtype=int)
+		state_goal = np.zeros((x,y),dtype=int)
+		for i in range(self.xbound):
+			for j in range(self.ybound):
+				
+				state_pos[i,j] = int(self.pos == (i,j))
+				state_trap[i,j] = int(self.maze[i,j] == 'X')
+				state_goal[i,j] = int(self.maze[i,j] == 'G')
+
+		return np.array([state_pos,state_trap,state_goal])
 
 	def print_state(self, state):
 		print(state/self.ybound, state%self.ybound, end=' ')
