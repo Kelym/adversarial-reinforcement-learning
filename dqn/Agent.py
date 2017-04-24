@@ -57,7 +57,7 @@ class DQN(nn.Module):
 	def __init__(self, dims):
 		super(DQN, self).__init__()
 		# first convolutional layer designed to capture information about neighbors
-		self.conv1 = nn.Conv2d(3, 16, kernel_size=3, stride=1, padding=1)
+		self.conv1 = nn.Conv2d(3, 4, kernel_size=3, stride=1, padding=1)
 		# good practice to use batch normalization before applying non-linear ReLu
 		self.bn1 = nn.BatchNorm2d(4)
 		x,y = dims
@@ -245,6 +245,10 @@ class AgentQLearn():
 		'''
 	def save_model(self,fname):
 		torch.save(self.net.cpu().state_dict(),fname)
+
+	def load_model(self,fname):
+		state_dict = torch.load(fname)
+		self.net.load_state_dict(state_dict)
 
 	# state is state as given by env; not necessarily in suitable format for network input
 	def policy(self,state,can_explore=True):

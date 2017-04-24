@@ -35,8 +35,13 @@ def main():
 	env = Environment.Toy(dimensions,trap_prob)
 	env.debug = 1
 	agent = Agent.AgentQLearn(env)
+	print('Loading model weights from %s' % model_file)
+	agent.load_model(model_file)
 
+	print('Commencing learning')
 	results = agent.learn(nEpochs=200)
+
+	print('Saving model weights to %s' % model_file)
 	agent.save_model(model_file)
 
 	#results = ([1,2,3],[0.25,0.5,0.75])
