@@ -36,7 +36,7 @@ def main():
 	env.debug = 1
 	agent = Agent.AgentQLearn(env)
 
-	results = agent.learn()
+	results = agent.learn(nEpochs=200)
 	agent.save_model(model_file)
 
 	#results = ([1,2,3],[0.25,0.5,0.75])

@@ -58,8 +58,10 @@ class DQN(nn.Module):
 		super(DQN, self).__init__()
 		# first convolutional layer designed to capture information about neighbors
 		self.conv1 = nn.Conv2d(3, 16, kernel_size=3, stride=1, padding=1)
+		self.conv2 = nn.Conv2d(16, 4, kernel_size=3, stride=1, padding=1)
 		# good practice to use batch normalization before applying non-linear ReLu
-		self.bn1 = nn.BatchNorm2d(4)
+		self.bn1 = nn.BatchNorm2d(16)
+		self.bn2 = nn.BatchNorm2d(4)
 		x,y = dims
 		#self.fc1 = nn.Linear(16*x*y, 16)
 		self.fc1 = nn.Linear(4*x*y, 4)
@@ -71,6 +73,7 @@ class DQN(nn.Module):
 	def forward(self, x):
 		#print(x.data.size())
 		x = F.relu(self.bn1(self.conv1(x)))
+		x = F.relu(self.bn2(self.conv2(x)))
 		#print(x.data.size())
 		# view flattens x so that it can be fed into FC layer
 		x = F.relu(self.fc1(x.view(x.size(0), -1)))
