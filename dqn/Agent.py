@@ -332,7 +332,11 @@ def to_var(ndarray, volatile=False):
 	if tensor.dim() == 3:
 		tensor.unsqueeze_(0)
 
-	return var(tensor, volatile=volatile)
+	v = var(tensor, volatile=volatile)
+	if torch.cuda.is_available():
+		v = v.cuda()
+
+	return v
 
 # TODO function that transforms given batch into format that aligns with
 # input to network
