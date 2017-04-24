@@ -1,0 +1,209 @@
+model: 1 conv2d (4 filters), 1 linear
+
+***curiosity = 1
+
+lr = 0.01, nEpochs=50, mini_batch_size=50, nSteps=1000, nTestMazes=100
+trap_reward = -100, goal_reward = 100, move_reward = -0.5
+trap_prob = 1/3
+
+Finished epoch 0....
+Success rate: 10 / 100
+Avg. Reward: -76.730000
+
+Finished epoch 1....
+Success rate: 12 / 100
+Avg. Reward: -75.410000
+
+Finished epoch 2....
+Success rate: 8 / 100
+Avg. Reward: -83.435000
+
+Finished epoch 3....
+Success rate: 7 / 100
+Avg. Reward: -85.390000
+
+Finished epoch 4....
+Success rate: 11 / 100
+Avg. Reward: -74.640000
+
+Finished epoch 5....
+Success rate: 8 / 100
+Avg. Reward: -78.780000
+
+Finished epoch 6....
+Success rate: 8 / 100
+Avg. Reward: -74.090000
+
+Finished epoch 7....
+Success rate: 4 / 100
+Avg. Reward: -82.205000
+
+Finished epoch 8....
+Success rate: 10 / 100
+Avg. Reward: -66.425000
+
+Finished epoch 9....
+Success rate: 5 / 100
+Avg. Reward: -78.310000
+
+Finished epoch 10....
+Success rate: 6 / 100
+Avg. Reward: -67.075000
+
+Finished epoch 11....
+Success rate: 8 / 100
+Avg. Reward: -56.585000
+
+Finished epoch 12....
+Success rate: 12 / 100
+Avg. Reward: -50.455000
+
+Finished epoch 13....
+Success rate: 8 / 100
+Avg. Reward: -52.845000
+
+Finished epoch 14....
+Success rate: 12 / 100
+Avg. Reward: -46.670000
+
+Finished epoch 15....
+Success rate: 13 / 100
+Avg. Reward: -39.155000
+
+Finished epoch 16....
+Success rate: 12 / 100
+Avg. Reward: -43.995000
+
+Finished epoch 17....
+Success rate: 11 / 100
+Avg. Reward: -41.345000
+
+Finished epoch 18....
+Success rate: 11 / 100
+Avg. Reward: -46.050000
+
+Finished epoch 19....
+Success rate: 6 / 100
+Avg. Reward: -52.295000
+
+Finished epoch 20....
+Success rate: 14 / 100
+Avg. Reward: -30.795000
+
+Finished epoch 21....
+Success rate: 9 / 100
+Avg. Reward: -46.345000
+
+Finished epoch 22....
+Success rate: 10 / 100
+Avg. Reward: -39.695000
+
+Finished epoch 23....
+Success rate: 7 / 100
+Avg. Reward: -45.725000
+
+Finished epoch 24....
+Success rate: 9 / 100
+Avg. Reward: -50.065000
+
+Finished epoch 25....
+Success rate: 10 / 100
+Avg. Reward: -50.795000
+
+Finished epoch 26....
+Success rate: 3 / 100
+Avg. Reward: -50.065000
+
+Finished epoch 27....
+Success rate: 6 / 100
+Avg. Reward: -52.375000
+
+Finished epoch 28....
+Success rate: 4 / 100
+Avg. Reward: -45.295000
+
+Finished epoch 29....
+Success rate: 5 / 100
+Avg. Reward: -44.180000
+
+Finished epoch 30....
+Success rate: 4 / 100
+Avg. Reward: -50.745000
+
+Finished epoch 31....
+Success rate: 6 / 100
+Avg. Reward: -47.640000
+
+Finished epoch 32....
+Success rate: 6 / 100
+Avg. Reward: -42.140000
+
+Finished epoch 33....
+Success rate: 12 / 100
+Avg. Reward: -34.735000
+
+Finished epoch 34....
+Success rate: 11 / 100
+Avg. Reward: -34.900000
+
+Finished epoch 35....
+Success rate: 13 / 100
+Avg. Reward: -28.095000
+
+Finished epoch 36....
+Success rate: 8 / 100
+Avg. Reward: -36.300000
+
+Finished epoch 37....
+Success rate: 11 / 100
+Avg. Reward: -31.220000
+
+Finished epoch 38....
+Success rate: 16 / 100
+Avg. Reward: -31.395000
+
+Finished epoch 39....
+Success rate: 14 / 100
+Avg. Reward: -31.670000
+
+Finished epoch 40....
+Success rate: 23 / 100
+Avg. Reward: -11.855000
+
+Finished epoch 41....
+Success rate: 14 / 100
+Avg. Reward: -42.745000
+
+Finished epoch 42....
+Success rate: 19 / 100
+Avg. Reward: -28.275000
+
+Finished epoch 43....
+Success rate: 15 / 100
+Avg. Reward: -37.155000
+
+Finished epoch 44....
+Success rate: 16 / 100
+Avg. Reward: -34.230000
+
+Finished epoch 45....
+Success rate: 15 / 100
+Avg. Reward: -36.225000
+
+Finished epoch 46....
+Success rate: 21 / 100
+Avg. Reward: -24.225000
+
+Finished epoch 47....
+Success rate: 28 / 100
+Avg. Reward: -9.280000
+
+Finished epoch 48....
+Success rate: 17 / 100
+Avg. Reward: -22.055000
+
+Finished epoch 49....
+Success rate: 21 / 100
+Avg. Reward: -23.280000
+
+Learning Time: 153.901886

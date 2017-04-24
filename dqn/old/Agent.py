@@ -7,13 +7,12 @@ from __future__ import print_function
 import math
 import random
 import numpy as np
-import sys
 import matplotlib
 import matplotlib.pyplot as plt
 from collections import namedtuple
 from itertools import count
 from copy import deepcopy
-import time
+from PIL import Image
 
 import torch
 import torch.nn as nn
@@ -25,7 +24,7 @@ import torchvision.transforms as T
 import Environment
 
 Transition = namedtuple('Transition',
-						('state', 'action', 'next_state', 'isNotTerminal', 'reward'))
+						('state', 'action', 'next_state', 'reward'))
 
 # stores previously explored
 class ReplayMemory(object):
@@ -52,15 +51,14 @@ class DQN(nn.Module):
 	def __init__(self, dims):
 		super(DQN, self).__init__()
 		# first convolutional layer designed to capture information about neighbors
-		self.conv1 = nn.Conv2d(3, 4, kernel_size=3, stride=1, padding=1)
+		self.conv1 = nn.Conv2d(3, 16, kernel_size=3, stride=1, padding=1)
 		# good practice to use batch normalization before applying non-linear ReLu
-		self.bn1 = nn.BatchNorm2d(4)
+		self.bn1 = nn.BatchNorm2d(16)
 		x,y = dims
-		#self.fc1 = nn.Linear(16*x*y, 16)
-		self.fc1 = nn.Linear(4*x*y, 4)
+		self.fc1 = nn.Linear(16*x*y, 42)
 
 		# four output neurons correspond to the four possible actions
-		self.fc2 = nn.Linear(16,4)
+		self.fc2 = nn.Linear(42,4)
 		self.softmax = nn.Softmax()
 
 	def forward(self, x):
@@ -70,12 +68,11 @@ class DQN(nn.Module):
 		# view flattens x so that it can be fed into FC layer
 		x = F.relu(self.fc1(x.view(x.size(0), -1)))
 		#print(x.data.size())
-		#x = F.relu(self.fc2(x))
-		return x
-		#return self.softmax(x)
+		x = F.relu(self.fc2(x))
+		return self.softmax(x)
 
 class AgentQLearn():
-	def __init__(self, env, curiosity=1, learning_rate=0.01, discount_rate = 0.9):
+	def __init__(self, env, curiosity=0.1, learning_rate=0.01, discount_rate = 0.9):
 		self.env = env
 		self.explore_chance = curiosity
 		self.discount_rate = discount_rate
@@ -88,11 +85,7 @@ class AgentQLearn():
 		self.criterion = nn.SmoothL1Loss()
 		self.optimizer = torch.optim.SGD(self.net.parameters(), lr=learning_rate)
 
-	def learn(self, nEpochs=50, mini_batch_size=50, nSteps=1000, test=True, nTestMazes=100):
-		avg_rewards = []
-		success_rates = []
-
-		start = time.time()
+	def learn(self, nEpochs=50, mini_batch_size=10, nSteps=200, test=True, nTestMazes=100):
 		for epoch in range(nEpochs):
 			self.env = self.env.new_maze()
 			state = self.env.observe()
@@ -104,7 +97,13 @@ class AgentQLearn():
 			initial_q_values = self.net(to_var(initial_state, volatile=True))
 			print(initial_q_values)
 			'''
-			
+			print('\nStarting epoch %d....' % epoch)
+
+			if test:
+				nSuccesses, avg_reward = self.test(nTestMazes)
+				print('Success rate: %d / %d\nAvg. Reward: %f' 
+					% (nSuccesses, nTestMazes, avg_reward))
+
 			restart = False
 			for step in range(nSteps):
 				# if we've reached the goal state in current maze,
@@ -119,18 +118,7 @@ class AgentQLearn():
 				reward, square = self.env.act(action)
 				next_state = self.env.observe()
 
-				# state is terminal if trap or goal
-				# note: for learning purposes, learning still happens on same maze
-				# after trap is encountered
-				isNotTerminal = not (self.env.isTrap(square) or self.env.isGoal(square))
-				self.mem.push(state,action,next_state,isNotTerminal,reward)
-
-				'''
-				if self.env.isTrap(square) or self.env.isGoal(square):
-					self.mem.push(state,action,None,reward)
-				else:
-					self.mem.push(state,action,next_state,reward)
-				'''
+				self.mem.push(state,action,next_state,reward)
 
 				if len(self.mem) >= mini_batch_size:
 					# Sample mini-batch transitions from memory
@@ -140,81 +128,37 @@ class AgentQLearn():
 					action_batch = np.array([trans.action for trans in batch])
 					reward_batch = np.array([trans.reward for trans in batch])
 					next_state_batch = np.array([trans.next_state for trans in batch])
-					isNotTerminal_batch = np.array([int(trans.isNotTerminal) for trans in batch])
-
-					# is 0 if state is terminal (trap or goal)
-					non_terminal_mask = to_var(isNotTerminal_batch)
-
-					'''
-					print(next_state_batch)
-					print(non_final_mask)
-					sys.exit(0)
-					'''
-
-					'''
-					# collects all next states that aren't terminal to be fed into model
-					# volatile so that grad isn't calculated w.r.t. to this feed-forward
-					non_terminal_next_states = to_var(np.array([s for s in next_state_batch
-												if s is not None]),
-												volatile=True)
-					next_q_values = to_var(np.zeros((mini_batch_size,)))
-					next_q_values[non_final_mask] = self.net(non_final_next_states).max(1)[0]
-					notGoalFunc = lambda s: int(not self.env.isGoalState(s))
-					next_NOTGoal_batch = np.array([notGoalFunc(s) for s in next_state_batch])
-					'''
 
 					# Forward + Backward + Optimize
 					self.net.zero_grad()
-					# feeds-forward state batch and collects the action outputs corresponding to the action batch
-					q_values = self.net(to_var(state_batch, volatile=False)).gather(1,to_var(action_batch).long().view(-1, 1))
+					q_values = self.net(to_var(state_batch, volatile=False))
 					
 					# Make volatile so that computational graph isn't affected
 					# by this batch of inputs
-					next_max_q_values = self.net(to_var(next_state_batch, volatile=True)).max(1)[0].float()
+					next_q_values = self.net(to_var(next_state_batch, volatile=True))
 
-					'''
-					print(next_q_values.data)
-					print(next_q_values.data.max(1))
-					print(next_q_values.data.max(1)[0])
-					'''
-				
+					#print(q_values.data)
+					#print(next_q_values.data)
+
+
 					# change volatile flag back to false so that weight gradients will be calculated
-					next_max_q_values.volatile = False
+					next_q_values.volatile = False
 
-					# only includes future q values if neither in goal state nor trap state
-					target = to_var(reward_batch) + self.discount_rate * next_max_q_values * non_terminal_mask
-					loss = self.criterion(q_values, target)
-
-					self.optimizer.zero_grad()
+					target = to_var(reward_batch) + self.discount_rate * var(next_q_values.data.max(1)[1].float())
+					loss = self.criterion(q_values.gather(1,to_var(action_batch).long().view(-1, 1)),
+										  target)
 					loss.backward()
 					self.optimizer.step()
 
 				if self.env.isGoal(square):
-					assert self.env.isGoalState(next_state)
 					restart = True
 
 				state = next_state
 
-			print('\nFinished epoch %d....' % epoch)
-
-			if test:
-				nSuccesses, avg_reward = self.test(nTestMazes)
-				print('Success rate: %d / %d\nAvg. Reward: %f' 
-					% (nSuccesses, nTestMazes, avg_reward))
-
-				avg_rewards.append(avg_reward)
-				success_rates.append(float(nSuccesses) / nTestMazes)
-
-		end = time.time()
-
-		print('\nLearning Time: %f' % (end - start))
-
-		return avg_rewards, success_rates
-
-		'''
-		final_q_values = self.net(to_var(initial_state, volatile=True))
-		print(final_q_values)
-		'''
+			'''
+			final_q_values = self.net(to_var(initial_state, volatile=True))
+			print(final_q_values)
+			'''
 
 	# state is state as given by env; not necessarily in suitable format for network input
 	def policy(self,state,can_explore=True):
@@ -234,7 +178,7 @@ class AgentQLearn():
 	def explore(self):
 		return random.random() < self.explore_chance
 
-	def test(self, nMazes, debug=False):
+	def test(self, nMazes):
 		avg_reward = 0.0
 		nSuccesses = 0
 		max_nSteps = self.env.xbound * self.env.ybound
@@ -242,26 +186,11 @@ class AgentQLearn():
 			env = self.env.new_maze()
 			state = env.observe()
 			cum_reward = 0.0
-
-			if debug:
-				print('Initial State:')
-				env.print_state()
 			
-			for step in range(max_nSteps):
-
+			for step in range(max_nSteps):		
 				action = self.policy(state,can_explore=False)
 				reward, square = env.act(action)
 				cum_reward += reward
-
-				if debug:
-					print('\n-------------------------------\n')
-					print('Step %d:\nPrev Action: ' % step, end='')
-					env.print_action(action)
-					print()
-					env.print_state()
-					print('Cumulative reward: %f' % cum_reward)
-
-					input('Press enter....')
 
 				if env.isGoal(square):
 					nSuccesses += 1

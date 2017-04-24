@@ -1,0 +1,1 @@
+increasing the size of the network (even with curiosity=1) performed poorly 

@@ -4,7 +4,7 @@ from __future__ import print_function
 import numpy as np
 import random
 import os
-import sys
+#import sys
 
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
@@ -39,7 +39,7 @@ def main():
 
 	#results = ([1,2,3],[0.25,0.5,0.75])
 
-	create_plots(results,'1-conv2d_1-linear_lr-.01_50-epochs_NO-SOFTMAX')
+	create_plots(results,'history_test')
 
 	#sys.stdout.close()
 

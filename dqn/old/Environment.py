@@ -19,10 +19,6 @@ Extra
 The following is a naive environment, an m x n maze generated randomly
 '''
 
-trap_reward = -100
-goal_reward = 100
-move_reward = -.5
-
 class Toy(object):
 	# trap_prob is likelihood that given square is a trap
 	def __init__(self, dims, trap_prob=-1):
@@ -43,7 +39,7 @@ class Toy(object):
 			self.trap_prob = trap_prob
 
 		traps = np.random.binomial(1,self.trap_prob,self.nSquares)
-		self.maze = np.array([' T ' if traps[i] else ' * ' for i in range(self.nSquares)])
+		self.maze = np.array(['X' if traps[i] else '' for i in range(self.nSquares)])
 
 		randoms = np.random.randint(self.nSquares, size=2)
 		start = int(randoms[0])
@@ -53,10 +49,10 @@ class Toy(object):
 		# initial starting position
 		self.pos = (s_x, s_y)
 
-		self.maze[start] = ' S '
+		self.maze[start] = 'S'
 
 		goal = randoms[1]
-		self.maze[goal] = ' G '
+		self.maze[goal] = 'G'
 
 		self.maze = self.maze.reshape(dims)
 
@@ -80,19 +76,17 @@ class Toy(object):
 
 		if(new_x < 0 or new_x >= self.xbound or new_y < 0 or new_y >= self.ybound):
 			# Out of maze; considered a "trap"
-			return trap_reward, ' T '
-
-		square = self.maze[new_x][new_y]
-		if(self.isTrap(square)):
+			return -100, 'T'
+		if(self.maze[new_x][new_y] == 'T'):
 			# Trap
-			return trap_reward, ' T '
+			return -100, 'T'
 
 		self.set_position((new_x, new_y))
-		if(self.isGoal(square)):
-			# Goal
-			return goal_reward, ' G '
+		if(self.maze[new_x][new_y] == 'G'):
+			# Target
+			return 100, 'G'
 		# Punish for time passed
-		return move_reward, ' P '
+		return -0.5, 'P'
 
 	def observe(self):
 		# The method will produce a 3D array (self.dims x 3 flags)
@@ -129,7 +123,7 @@ class Toy(object):
 			elif self._isStart(square):
 				state_display[x,y] = 'P/S'
 			else:
-				state_display[x,y] = ' P '
+				state_display[x,y] = 'P'
 
 		else:
 			state_display = np.zeros(self.maze.shape,dtype=str)
@@ -138,33 +132,27 @@ class Toy(object):
 				for j in range(self.ybound):
 				
 					if trap[i,j]:
-						state_display[i,j] = 'P/T' if pos[i,j] else ' T '
+						state_display[i,j] = 'P/T' if pos[i,j] else 'T'
 	
 					if goal[i,j]:
-						state_display[i,j] = 'P/G' if pos[i,j] else ' G '
+						state_display[i,j] = 'P/G' if pos[i,j] else 'G'
 	
 					if pos[i,j]:
-						state_display[i,j] = ' P '
+						state_display[i,j] = 'P'
 				
 		for row in state_display:
-			print(''.join(row))
+			print(row)
 
 		return state_display
 
 	def isTrap(self,square):
-		return square == ' T '
+		return square == 'T'
 
 	def isGoal(self,square):
-		return square == ' G '
-
-	def isGoalState(self,state):
-		#print(state)
-		pos, trap, goal = state
-
-		return np.array_equal(pos,goal)
+		return square == 'G'
 
 	def _isStart(self,square):
-		return square == ' S '
+		return square == 'S'
 
 	def print_action(self, action):
 		print(self.actions_name[action], end=' ')

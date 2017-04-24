@@ -7,7 +7,6 @@ from __future__ import print_function
 import math
 import random
 import numpy as np
-import sys
 import matplotlib
 import matplotlib.pyplot as plt
 from collections import namedtuple
@@ -25,7 +24,7 @@ import torchvision.transforms as T
 import Environment
 
 Transition = namedtuple('Transition',
-						('state', 'action', 'next_state', 'isNotTerminal', 'reward'))
+						('state', 'action', 'next_state', 'next_isGoal', 'reward'))
 
 # stores previously explored
 class ReplayMemory(object):
@@ -52,7 +51,7 @@ class DQN(nn.Module):
 	def __init__(self, dims):
 		super(DQN, self).__init__()
 		# first convolutional layer designed to capture information about neighbors
-		self.conv1 = nn.Conv2d(3, 4, kernel_size=3, stride=1, padding=1)
+		self.conv1 = nn.Conv2d(4, 4, kernel_size=3, stride=1, padding=1)
 		# good practice to use batch normalization before applying non-linear ReLu
 		self.bn1 = nn.BatchNorm2d(4)
 		x,y = dims
@@ -71,8 +70,7 @@ class DQN(nn.Module):
 		x = F.relu(self.fc1(x.view(x.size(0), -1)))
 		#print(x.data.size())
 		#x = F.relu(self.fc2(x))
-		return x
-		#return self.softmax(x)
+		return self.softmax(x)
 
 class AgentQLearn():
 	def __init__(self, env, curiosity=1, learning_rate=0.01, discount_rate = 0.9):
@@ -118,19 +116,9 @@ class AgentQLearn():
 				action = self.policy(state)
 				reward, square = self.env.act(action)
 				next_state = self.env.observe()
+				next_isGoal = self.env.isGoal(square)
 
-				# state is terminal if trap or goal
-				# note: for learning purposes, learning still happens on same maze
-				# after trap is encountered
-				isNotTerminal = not (self.env.isTrap(square) or self.env.isGoal(square))
-				self.mem.push(state,action,next_state,isNotTerminal,reward)
-
-				'''
-				if self.env.isTrap(square) or self.env.isGoal(square):
-					self.mem.push(state,action,None,reward)
-				else:
-					self.mem.push(state,action,next_state,reward)
-				'''
+				self.mem.push(state,action,next_state,next_isGoal,reward)
 
 				if len(self.mem) >= mini_batch_size:
 					# Sample mini-batch transitions from memory
@@ -140,57 +128,31 @@ class AgentQLearn():
 					action_batch = np.array([trans.action for trans in batch])
 					reward_batch = np.array([trans.reward for trans in batch])
 					next_state_batch = np.array([trans.next_state for trans in batch])
-					isNotTerminal_batch = np.array([int(trans.isNotTerminal) for trans in batch])
-
-					# is 0 if state is terminal (trap or goal)
-					non_terminal_mask = to_var(isNotTerminal_batch)
-
-					'''
-					print(next_state_batch)
-					print(non_final_mask)
-					sys.exit(0)
-					'''
-
-					'''
-					# collects all next states that aren't terminal to be fed into model
-					# volatile so that grad isn't calculated w.r.t. to this feed-forward
-					non_terminal_next_states = to_var(np.array([s for s in next_state_batch
-												if s is not None]),
-												volatile=True)
-					next_q_values = to_var(np.zeros((mini_batch_size,)))
-					next_q_values[non_final_mask] = self.net(non_final_next_states).max(1)[0]
-					notGoalFunc = lambda s: int(not self.env.isGoalState(s))
-					next_NOTGoal_batch = np.array([notGoalFunc(s) for s in next_state_batch])
-					'''
+					next_NOTGoal_batch = np.array([int(not trans.next_isGoal) for trans in batch])
 
 					# Forward + Backward + Optimize
 					self.net.zero_grad()
-					# feeds-forward state batch and collects the action outputs corresponding to the action batch
-					q_values = self.net(to_var(state_batch, volatile=False)).gather(1,to_var(action_batch).long().view(-1, 1))
+					q_values = self.net(to_var(state_batch, volatile=False))
 					
 					# Make volatile so that computational graph isn't affected
 					# by this batch of inputs
-					next_max_q_values = self.net(to_var(next_state_batch, volatile=True)).max(1)[0].float()
+					next_q_values = self.net(to_var(next_state_batch, volatile=True))
 
-					'''
-					print(next_q_values.data)
-					print(next_q_values.data.max(1))
-					print(next_q_values.data.max(1)[0])
-					'''
-				
+					#print(q_values.data)
+					#print(next_q_values.data)
+
+
 					# change volatile flag back to false so that weight gradients will be calculated
-					next_max_q_values.volatile = False
+					next_q_values.volatile = False
 
-					# only includes future q values if neither in goal state nor trap state
-					target = to_var(reward_batch) + self.discount_rate * next_max_q_values * non_terminal_mask
-					loss = self.criterion(q_values, target)
-
-					self.optimizer.zero_grad()
+					# if next state is NOT goal, then the next max q value should be part of target
+					target = to_var(reward_batch) + self.discount_rate * var(next_q_values.data.max(1)[1].float()) * to_var(next_NOTGoal_batch)
+					loss = self.criterion(q_values.gather(1,to_var(action_batch).long().view(-1, 1)),
+										  target)
 					loss.backward()
 					self.optimizer.step()
 
-				if self.env.isGoal(square):
-					assert self.env.isGoalState(next_state)
+				if next_isGoal:
 					restart = True
 
 				state = next_state

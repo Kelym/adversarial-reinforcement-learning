@@ -20,6 +20,7 @@ The following is a naive environment, an m x n maze generated randomly
 '''
 
 trap_reward = -100
+revisit_reward = -50
 goal_reward = 100
 move_reward = -.5
 
@@ -59,6 +60,8 @@ class Toy(object):
 		self.maze[goal] = ' G '
 
 		self.maze = self.maze.reshape(dims)
+		self.explored = np.zeros(dims, dtype='int')
+		self.explored[s_x,s_y] = 1
 
 		self.debug = 0
 
@@ -88,6 +91,11 @@ class Toy(object):
 			return trap_reward, ' T '
 
 		self.set_position((new_x, new_y))
+
+		# Punish for retracing steps
+		if(self.explored[new_x, new_y]):
+			return revisit_reward, ' P '
+
 		if(self.isGoal(square)):
 			# Goal
 			return goal_reward, ' G '
@@ -99,7 +107,8 @@ class Toy(object):
 		# the three flags are as follows:
 		#	- 1 if square is current location of player
 		#	- 1 if square is trap
-		#	- 1 if square is goal 
+		#	- 1 if square is goal
+		#	- 1 if square has been explored 
 		x, y = self.maze.shape
 		state_pos = np.zeros((x,y),dtype=int)
 		state_trap = np.zeros((x,y),dtype=int)
@@ -112,7 +121,10 @@ class Toy(object):
 				state_trap[i,j] = int(self.isTrap(square))
 				state_goal[i,j] = int(self.isGoal(square))
 
-		return np.array([state_pos,state_trap,state_goal])
+		return np.array([state_pos,
+						 state_trap,
+						 state_goal,
+						 self.explored.copy()])
 
 	def print_state(self, state=None):
 		state_display = None
@@ -120,6 +132,12 @@ class Toy(object):
 		# print current state of environment
 		if state is None:
 			state_display = self.maze.copy()
+			for i in range(self.xbound):
+				for j in range(self.ybound):
+				
+					if self.explored[i,j]:
+						state_display[i,j] = ' O '
+
 			x,y = self.pos
 			square = self.maze[x,y]
 			if self.isTrap(square):
@@ -133,17 +151,20 @@ class Toy(object):
 
 		else:
 			state_display = np.zeros(self.maze.shape,dtype=str)
-			pos, trap, goal = tuple(state)
+			pos, trap, goal, explored = tuple(state)
 			for i in range(self.xbound):
 				for j in range(self.ybound):
+
+					if explored[i,j]:
+						state_display[i,j] = ' O '
 				
-					if trap[i,j]:
+					elif trap[i,j]:
 						state_display[i,j] = 'P/T' if pos[i,j] else ' T '
 	
-					if goal[i,j]:
+					elif goal[i,j]:
 						state_display[i,j] = 'P/G' if pos[i,j] else ' G '
 	
-					if pos[i,j]:
+					elif pos[i,j]:
 						state_display[i,j] = ' P '
 				
 		for row in state_display:
@@ -157,12 +178,6 @@ class Toy(object):
 	def isGoal(self,square):
 		return square == ' G '
 
-	def isGoalState(self,state):
-		#print(state)
-		pos, trap, goal = state
-
-		return np.array_equal(pos,goal)
-
 	def _isStart(self,square):
 		return square == ' S '
 
@@ -171,3 +186,5 @@ class Toy(object):
 
 	def set_position(self,pos):
 		self.pos = pos
+		x,y = pos
+		self.explored[x,y] = 1

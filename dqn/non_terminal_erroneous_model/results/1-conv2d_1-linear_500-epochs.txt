@@ -1,0 +1,2009 @@
+model: 1 conv2d, 1 linear
+
+***curiosity = 1
+
+lr = 0.01, nEpochs=500, mini_batch_size=50, nSteps=1000, nTestMazes=100
+trap_reward = -100, goal_reward = 100, move_reward = -0.5
+trap_prob = 1/3
+
+Starting epoch 0....
+Success rate: 9 / 100
+Avg. Reward: -72.225000
+
+Starting epoch 1....
+Success rate: 6 / 100
+Avg. Reward: -83.665000
+
+Starting epoch 2....
+Success rate: 9 / 100
+Avg. Reward: -61.905000
+
+Starting epoch 3....
+Success rate: 10 / 100
+Avg. Reward: -57.145000
+
+Starting epoch 4....
+Success rate: 11 / 100
+Avg. Reward: -36.675000
+
+Starting epoch 5....
+Success rate: 8 / 100
+Avg. Reward: -39.910000
+
+Starting epoch 6....
+Success rate: 12 / 100
+Avg. Reward: -37.440000
+
+Starting epoch 7....
+Success rate: 10 / 100
+Avg. Reward: -35.035000
+
+Starting epoch 8....
+Success rate: 7 / 100
+Avg. Reward: -43.775000
+
+Starting epoch 9....
+Success rate: 15 / 100
+Avg. Reward: -31.485000
+
+Starting epoch 10....
+Success rate: 14 / 100
+Avg. Reward: -25.140000
+
+Starting epoch 11....
+Success rate: 11 / 100
+Avg. Reward: -37.615000
+
+Starting epoch 12....
+Success rate: 15 / 100
+Avg. Reward: -30.525000
+
+Starting epoch 13....
+Success rate: 12 / 100
+Avg. Reward: -31.930000
+
+Starting epoch 14....
+Success rate: 10 / 100
+Avg. Reward: -46.055000
+
+Starting epoch 15....
+Success rate: 11 / 100
+Avg. Reward: -34.885000
+
+Starting epoch 16....
+Success rate: 8 / 100
+Avg. Reward: -47.385000
+
+Starting epoch 17....
+Success rate: 11 / 100
+Avg. Reward: -34.855000
+
+Starting epoch 18....
+Success rate: 9 / 100
+Avg. Reward: -35.185000
+
+Starting epoch 19....
+Success rate: 10 / 100
+Avg. Reward: -36.035000
+
+Starting epoch 20....
+Success rate: 11 / 100
+Avg. Reward: -36.740000
+
+Starting epoch 21....
+Success rate: 9 / 100
+Avg. Reward: -43.530000
+
+Starting epoch 22....
+Success rate: 8 / 100
+Avg. Reward: -44.610000
+
+Starting epoch 23....
+Success rate: 14 / 100
+Avg. Reward: -26.135000
+
+Starting epoch 24....
+Success rate: 12 / 100
+Avg. Reward: -34.740000
+
+Starting epoch 25....
+Success rate: 14 / 100
+Avg. Reward: -23.345000
+
+Starting epoch 26....
+Success rate: 13 / 100
+Avg. Reward: -38.255000
+
+Starting epoch 27....
+Success rate: 14 / 100
+Avg. Reward: -23.300000
+
+Starting epoch 28....
+Success rate: 15 / 100
+Avg. Reward: -23.210000
+
+Starting epoch 29....
+Success rate: 10 / 100
+Avg. Reward: -35.920000
+
+Starting epoch 30....
+Success rate: 7 / 100
+Avg. Reward: -39.220000
+
+Starting epoch 31....
+Success rate: 15 / 100
+Avg. Reward: -25.970000
+
+Starting epoch 32....
+Success rate: 15 / 100
+Avg. Reward: -17.625000
+
+Starting epoch 33....
+Success rate: 8 / 100
+Avg. Reward: -37.140000
+
+Starting epoch 34....
+Success rate: 15 / 100
+Avg. Reward: -34.210000
+
+Starting epoch 35....
+Success rate: 10 / 100
+Avg. Reward: -32.255000
+
+Starting epoch 36....
+Success rate: 13 / 100
+Avg. Reward: -24.415000
+
+Starting epoch 37....
+Success rate: 9 / 100
+Avg. Reward: -31.480000
+
+Starting epoch 38....
+Success rate: 12 / 100
+Avg. Reward: -29.170000
+
+Starting epoch 39....
+Success rate: 15 / 100
+Avg. Reward: -26.865000
+
+Starting epoch 40....
+Success rate: 11 / 100
+Avg. Reward: -36.755000
+
+Starting epoch 41....
+Success rate: 11 / 100
+Avg. Reward: -35.810000
+
+Starting epoch 42....
+Success rate: 11 / 100
+Avg. Reward: -36.725000
+
+Starting epoch 43....
+Success rate: 9 / 100
+Avg. Reward: -37.975000
+
+Starting epoch 44....
+Success rate: 10 / 100
+Avg. Reward: -39.705000
+
+Starting epoch 45....
+Success rate: 9 / 100
+Avg. Reward: -29.690000
+
+Starting epoch 46....
+Success rate: 18 / 100
+Avg. Reward: -29.240000
+
+Starting epoch 47....
+Success rate: 13 / 100
+Avg. Reward: -38.255000
+
+Starting epoch 48....
+Success rate: 7 / 100
+Avg. Reward: -41.945000
+
+Starting epoch 49....
+Success rate: 11 / 100
+Avg. Reward: -35.795000
+
+Starting epoch 50....
+Success rate: 7 / 100
+Avg. Reward: -44.710000
+
+Starting epoch 51....
+Success rate: 12 / 100
+Avg. Reward: -32.860000
+
+Starting epoch 52....
+Success rate: 11 / 100
+Avg. Reward: -28.430000
+
+Starting epoch 53....
+Success rate: 11 / 100
+Avg. Reward: -25.685000
+
+Starting epoch 54....
+Success rate: 16 / 100
+Avg. Reward: -23.020000
+
+Starting epoch 55....
+Success rate: 9 / 100
+Avg. Reward: -27.840000
+
+Starting epoch 56....
+Success rate: 15 / 100
+Avg. Reward: -23.185000
+
+Starting epoch 57....
+Success rate: 13 / 100
+Avg. Reward: -25.340000
+
+Starting epoch 58....
+Success rate: 12 / 100
+Avg. Reward: -37.515000
+
+Starting epoch 59....
+Success rate: 12 / 100
+Avg. Reward: -23.675000
+
+Starting epoch 60....
+Success rate: 15 / 100
+Avg. Reward: -30.565000
+
+Starting epoch 61....
+Success rate: 11 / 100
+Avg. Reward: -34.900000
+
+Starting epoch 62....
+Success rate: 13 / 100
+Avg. Reward: -27.215000
+
+Starting epoch 63....
+Success rate: 14 / 100
+Avg. Reward: -24.250000
+
+Starting epoch 64....
+Success rate: 7 / 100
+Avg. Reward: -35.505000
+
+Starting epoch 65....
+Success rate: 6 / 100
+Avg. Reward: -42.115000
+
+Starting epoch 66....
+Success rate: 19 / 100
+Avg. Reward: -17.010000
+
+Starting epoch 67....
+Success rate: 13 / 100
+Avg. Reward: -18.900000
+
+Starting epoch 68....
+Success rate: 9 / 100
+Avg. Reward: -36.985000
+
+Starting epoch 69....
+Success rate: 13 / 100
+Avg. Reward: -27.185000
+
+Starting epoch 70....
+Success rate: 13 / 100
+Avg. Reward: -24.455000
+
+Starting epoch 71....
+Success rate: 7 / 100
+Avg. Reward: -35.530000
+
+Starting epoch 72....
+Success rate: 15 / 100
+Avg. Reward: -16.700000
+
+Starting epoch 73....
+Success rate: 10 / 100
+Avg. Reward: -33.210000
+
+Starting epoch 74....
+Success rate: 15 / 100
+Avg. Reward: -27.800000
+
+Starting epoch 75....
+Success rate: 14 / 100
+Avg. Reward: -22.420000
+
+Starting epoch 76....
+Success rate: 7 / 100
+Avg. Reward: -34.595000
+
+Starting epoch 77....
+Success rate: 10 / 100
+Avg. Reward: -32.320000
+
+Starting epoch 78....
+Success rate: 8 / 100
+Avg. Reward: -35.385000
+
+Starting epoch 79....
+Success rate: 12 / 100
+Avg. Reward: -28.285000
+
+Starting epoch 80....
+Success rate: 12 / 100
+Avg. Reward: -34.720000
+
+Starting epoch 81....
+Success rate: 20 / 100
+Avg. Reward: -13.175000
+
+Starting epoch 82....
+Success rate: 6 / 100
+Avg. Reward: -34.765000
+
+Starting epoch 83....
+Success rate: 17 / 100
+Avg. Reward: -18.280000
+
+Starting epoch 84....
+Success rate: 9 / 100
+Avg. Reward: -33.390000
+
+Starting epoch 85....
+Success rate: 12 / 100
+Avg. Reward: -22.755000
+
+Starting epoch 86....
+Success rate: 12 / 100
+Avg. Reward: -26.435000
+
+Starting epoch 87....
+Success rate: 12 / 100
+Avg. Reward: -22.730000
+
+Starting epoch 88....
+Success rate: 9 / 100
+Avg. Reward: -38.860000
+
+Starting epoch 89....
+Success rate: 11 / 100
+Avg. Reward: -33.045000
+
+Starting epoch 90....
+Success rate: 6 / 100
+Avg. Reward: -37.520000
+
+Starting epoch 91....
+Success rate: 13 / 100
+Avg. Reward: -20.735000
+
+Starting epoch 92....
+Success rate: 9 / 100
+Avg. Reward: -33.350000
+
+Starting epoch 93....
+Success rate: 9 / 100
+Avg. Reward: -38.915000
+
+Starting epoch 94....
+Success rate: 9 / 100
+Avg. Reward: -40.715000
+
+Starting epoch 95....
+Success rate: 18 / 100
+Avg. Reward: -25.485000
+
+Starting epoch 96....
+Success rate: 8 / 100
+Avg. Reward: -36.255000
+
+Starting epoch 97....
+Success rate: 9 / 100
+Avg. Reward: -31.530000
+
+Starting epoch 98....
+Success rate: 15 / 100
+Avg. Reward: -29.640000
+
+Starting epoch 99....
+Success rate: 14 / 100
+Avg. Reward: -21.545000
+
+Starting epoch 100....
+Success rate: 17 / 100
+Avg. Reward: -15.485000
+
+Starting epoch 101....
+Success rate: 13 / 100
+Avg. Reward: -24.405000
+
+Starting epoch 102....
+Success rate: 8 / 100
+Avg. Reward: -37.205000
+
+Starting epoch 103....
+Success rate: 16 / 100
+Avg. Reward: -18.425000
+
+Starting epoch 104....
+Success rate: 16 / 100
+Avg. Reward: -22.125000
+
+Starting epoch 105....
+Success rate: 16 / 100
+Avg. Reward: -23.970000
+
+Starting epoch 106....
+Success rate: 12 / 100
+Avg. Reward: -27.355000
+
+Starting epoch 107....
+Success rate: 17 / 100
+Avg. Reward: -18.280000
+
+Starting epoch 108....
+Success rate: 17 / 100
+Avg. Reward: -18.270000
+
+Starting epoch 109....
+Success rate: 14 / 100
+Avg. Reward: -30.730000
+
+Starting epoch 110....
+Success rate: 11 / 100
+Avg. Reward: -31.225000
+
+Starting epoch 111....
+Success rate: 13 / 100
+Avg. Reward: -21.685000
+
+Starting epoch 112....
+Success rate: 16 / 100
+Avg. Reward: -22.135000
+
+Starting epoch 113....
+Success rate: 15 / 100
+Avg. Reward: -26.910000
+
+Starting epoch 114....
+Success rate: 11 / 100
+Avg. Reward: -26.610000
+
+Starting epoch 115....
+Success rate: 16 / 100
+Avg. Reward: -23.055000
+
+Starting epoch 116....
+Success rate: 14 / 100
+Avg. Reward: -27.055000
+
+Starting epoch 117....
+Success rate: 11 / 100
+Avg. Reward: -27.540000
+
+Starting epoch 118....
+Success rate: 21 / 100
+Avg. Reward: -16.775000
+
+Starting epoch 119....
+Success rate: 20 / 100
+Avg. Reward: -24.270000
+
+Starting epoch 120....
+Success rate: 17 / 100
+Avg. Reward: -21.060000
+
+Starting epoch 121....
+Success rate: 15 / 100
+Avg. Reward: -23.195000
+
+Starting epoch 122....
+Success rate: 19 / 100
+Avg. Reward: -23.485000
+
+Starting epoch 123....
+Success rate: 16 / 100
+Avg. Reward: -13.840000
+
+Starting epoch 124....
+Success rate: 10 / 100
+Avg. Reward: -30.495000
+
+Starting epoch 125....
+Success rate: 16 / 100
+Avg. Reward: -20.315000
+
+Starting epoch 126....
+Success rate: 11 / 100
+Avg. Reward: -26.605000
+
+Starting epoch 127....
+Success rate: 16 / 100
+Avg. Reward: -12.895000
+
+Starting epoch 128....
+Success rate: 11 / 100
+Avg. Reward: -22.880000
+
+Starting epoch 129....
+Success rate: 17 / 100
+Avg. Reward: -16.460000
+
+Starting epoch 130....
+Success rate: 12 / 100
+Avg. Reward: -26.410000
+
+Starting epoch 131....
+Success rate: 18 / 100
+Avg. Reward: -13.550000
+
+Starting epoch 132....
+Success rate: 19 / 100
+Avg. Reward: -17.085000
+
+Starting epoch 133....
+Success rate: 17 / 100
+Avg. Reward: -18.305000
+
+Starting epoch 134....
+Success rate: 10 / 100
+Avg. Reward: -29.450000
+
+Starting epoch 135....
+Success rate: 22 / 100
+Avg. Reward: -0.915000
+
+Starting epoch 136....
+Success rate: 13 / 100
+Avg. Reward: -22.595000
+
+Starting epoch 137....
+Success rate: 12 / 100
+Avg. Reward: -26.415000
+
+Starting epoch 138....
+Success rate: 21 / 100
+Avg. Reward: -19.470000
+
+Starting epoch 139....
+Success rate: 22 / 100
+Avg. Reward: -10.160000
+
+Starting epoch 140....
+Success rate: 17 / 100
+Avg. Reward: -17.330000
+
+Starting epoch 141....
+Success rate: 24 / 100
+Avg. Reward: -4.350000
+
+Starting epoch 142....
+Success rate: 24 / 100
+Avg. Reward: -15.375000
+
+Starting epoch 143....
+Success rate: 19 / 100
+Avg. Reward: -23.495000
+
+Starting epoch 144....
+Success rate: 16 / 100
+Avg. Reward: -23.070000
+
+Starting epoch 145....
+Success rate: 18 / 100
+Avg. Reward: -24.610000
+
+Starting epoch 146....
+Success rate: 23 / 100
+Avg. Reward: -16.450000
+
+Starting epoch 147....
+Success rate: 12 / 100
+Avg. Reward: -30.150000
+
+Starting epoch 148....
+Success rate: 20 / 100
+Avg. Reward: -18.750000
+
+Starting epoch 149....
+Success rate: 21 / 100
+Avg. Reward: -21.420000
+
+Starting epoch 150....
+Success rate: 18 / 100
+Avg. Reward: -18.150000
+
+Starting epoch 151....
+Success rate: 19 / 100
+Avg. Reward: -19.860000
+
+Starting epoch 152....
+Success rate: 18 / 100
+Avg. Reward: -13.525000
+
+Starting epoch 153....
+Success rate: 11 / 100
+Avg. Reward: -19.190000
+
+Starting epoch 154....
+Success rate: 16 / 100
+Avg. Reward: -17.500000
+
+Starting epoch 155....
+Success rate: 13 / 100
+Avg. Reward: -19.825000
+
+Starting epoch 156....
+Success rate: 16 / 100
+Avg. Reward: -17.510000
+
+Starting epoch 157....
+Success rate: 13 / 100
+Avg. Reward: -23.490000
+
+Starting epoch 158....
+Success rate: 19 / 100
+Avg. Reward: -13.330000
+
+Starting epoch 159....
+Success rate: 13 / 100
+Avg. Reward: -25.300000
+
+Starting epoch 160....
+Success rate: 16 / 100
+Avg. Reward: -20.330000
+
+Starting epoch 161....
+Success rate: 15 / 100
+Avg. Reward: -28.755000
+
+Starting epoch 162....
+Success rate: 9 / 100
+Avg. Reward: -34.305000
+
+Starting epoch 163....
+Success rate: 12 / 100
+Avg. Reward: -23.685000
+
+Starting epoch 164....
+Success rate: 12 / 100
+Avg. Reward: -29.210000
+
+Starting epoch 165....
+Success rate: 11 / 100
+Avg. Reward: -21.075000
+
+Starting epoch 166....
+Success rate: 17 / 100
+Avg. Reward: -21.050000
+
+Starting epoch 167....
+Success rate: 8 / 100
+Avg. Reward: -29.805000
+
+Starting epoch 168....
+Success rate: 12 / 100
+Avg. Reward: -25.515000
+
+Starting epoch 169....
+Success rate: 13 / 100
+Avg. Reward: -18.915000
+
+Starting epoch 170....
+Success rate: 17 / 100
+Avg. Reward: -13.650000
+
+Starting epoch 171....
+Success rate: 15 / 100
+Avg. Reward: -17.640000
+
+Starting epoch 172....
+Success rate: 19 / 100
+Avg. Reward: -7.865000
+
+Starting epoch 173....
+Success rate: 16 / 100
+Avg. Reward: -16.580000
+
+Starting epoch 174....
+Success rate: 14 / 100
+Avg. Reward: -25.205000
+
+Starting epoch 175....
+Success rate: 13 / 100
+Avg. Reward: -21.665000
+
+Starting epoch 176....
+Success rate: 16 / 100
+Avg. Reward: -15.650000
+
+Starting epoch 177....
+Success rate: 20 / 100
+Avg. Reward: -15.060000
+
+Starting epoch 178....
+Success rate: 20 / 100
+Avg. Reward: -12.280000
+
+Starting epoch 179....
+Success rate: 11 / 100
+Avg. Reward: -29.335000
+
+Starting epoch 180....
+Success rate: 12 / 100
+Avg. Reward: -24.605000
+
+Starting epoch 181....
+Success rate: 13 / 100
+Avg. Reward: -28.080000
+
+Starting epoch 182....
+Success rate: 18 / 100
+Avg. Reward: -16.285000
+
+Starting epoch 183....
+Success rate: 18 / 100
+Avg. Reward: -9.840000
+
+Starting epoch 184....
+Success rate: 18 / 100
+Avg. Reward: -11.665000
+
+Starting epoch 185....
+Success rate: 12 / 100
+Avg. Reward: -21.810000
+
+Starting epoch 186....
+Success rate: 16 / 100
+Avg. Reward: -13.830000
+
+Starting epoch 187....
+Success rate: 17 / 100
+Avg. Reward: -22.895000
+
+Starting epoch 188....
+Success rate: 16 / 100
+Avg. Reward: -16.630000
+
+Starting epoch 189....
+Success rate: 11 / 100
+Avg. Reward: -29.360000
+
+Starting epoch 190....
+Success rate: 18 / 100
+Avg. Reward: -14.420000
+
+Starting epoch 191....
+Success rate: 17 / 100
+Avg. Reward: -15.565000
+
+Starting epoch 192....
+Success rate: 15 / 100
+Avg. Reward: -22.290000
+
+Starting epoch 193....
+Success rate: 10 / 100
+Avg. Reward: -28.630000
+
+Starting epoch 194....
+Success rate: 19 / 100
+Avg. Reward: -13.360000
+
+Starting epoch 195....
+Success rate: 13 / 100
+Avg. Reward: -19.820000
+
+Starting epoch 196....
+Success rate: 23 / 100
+Avg. Reward: 1.080000
+
+Starting epoch 197....
+Success rate: 18 / 100
+Avg. Reward: -17.255000
+
+Starting epoch 198....
+Success rate: 22 / 100
+Avg. Reward: -2.745000
+
+Starting epoch 199....
+Success rate: 16 / 100
+Avg. Reward: -15.695000
+
+Starting epoch 200....
+Success rate: 10 / 100
+Avg. Reward: -22.170000
+
+Starting epoch 201....
+Success rate: 13 / 100
+Avg. Reward: -16.190000
+
+Starting epoch 202....
+Success rate: 15 / 100
+Avg. Reward: -17.625000
+
+Starting epoch 203....
+Success rate: 16 / 100
+Avg. Reward: -19.350000
+
+Starting epoch 204....
+Success rate: 19 / 100
+Avg. Reward: -13.345000
+
+Starting epoch 205....
+Success rate: 18 / 100
+Avg. Reward: -8.880000
+
+Starting epoch 206....
+Success rate: 21 / 100
+Avg. Reward: -15.780000
+
+Starting epoch 207....
+Success rate: 15 / 100
+Avg. Reward: -21.375000
+
+Starting epoch 208....
+Success rate: 21 / 100
+Avg. Reward: -6.570000
+
+Starting epoch 209....
+Success rate: 15 / 100
+Avg. Reward: -11.210000
+
+Starting epoch 210....
+Success rate: 9 / 100
+Avg. Reward: -28.700000
+
+Starting epoch 211....
+Success rate: 19 / 100
+Avg. Reward: -14.245000
+
+Starting epoch 212....
+Success rate: 19 / 100
+Avg. Reward: -9.660000
+
+Starting epoch 213....
+Success rate: 19 / 100
+Avg. Reward: -8.710000
+
+Starting epoch 214....
+Success rate: 10 / 100
+Avg. Reward: -24.905000
+
+Starting epoch 215....
+Success rate: 10 / 100
+Avg. Reward: -23.975000
+
+Starting epoch 216....
+Success rate: 16 / 100
+Avg. Reward: -21.210000
+
+Starting epoch 217....
+Success rate: 14 / 100
+Avg. Reward: -25.235000
+
+Starting epoch 218....
+Success rate: 18 / 100
+Avg. Reward: -13.575000
+
+Starting epoch 219....
+Success rate: 13 / 100
+Avg. Reward: -21.690000
+
+Starting epoch 220....
+Success rate: 18 / 100
+Avg. Reward: -14.435000
+
+Starting epoch 221....
+Success rate: 14 / 100
+Avg. Reward: -11.380000
+
+Starting epoch 222....
+Success rate: 13 / 100
+Avg. Reward: -16.095000
+
+Starting epoch 223....
+Success rate: 21 / 100
+Avg. Reward: -3.850000
+
+Starting epoch 224....
+Success rate: 14 / 100
+Avg. Reward: -22.440000
+
+Starting epoch 225....
+Success rate: 14 / 100
+Avg. Reward: -16.885000
+
+Starting epoch 226....
+Success rate: 15 / 100
+Avg. Reward: -16.730000
+
+Starting epoch 227....
+Success rate: 21 / 100
+Avg. Reward: -13.070000
+
+Starting epoch 228....
+Success rate: 11 / 100
+Avg. Reward: -22.955000
+
+Starting epoch 229....
+Success rate: 9 / 100
+Avg. Reward: -33.380000
+
+Starting epoch 230....
+Success rate: 16 / 100
+Avg. Reward: -26.715000
+
+Starting epoch 231....
+Success rate: 16 / 100
+Avg. Reward: -12.915000
+
+Starting epoch 232....
+Success rate: 16 / 100
+Avg. Reward: -12.930000
+
+Starting epoch 233....
+Success rate: 15 / 100
+Avg. Reward: -12.130000
+
+Starting epoch 234....
+Success rate: 21 / 100
+Avg. Reward: -8.445000
+
+Starting epoch 235....
+Success rate: 13 / 100
+Avg. Reward: -27.220000
+
+Starting epoch 236....
+Success rate: 16 / 100
+Avg. Reward: -16.575000
+
+Starting epoch 237....
+Success rate: 12 / 100
+Avg. Reward: -22.775000
+
+Starting epoch 238....
+Success rate: 20 / 100
+Avg. Reward: -16.885000
+
+Starting epoch 239....
+Success rate: 16 / 100
+Avg. Reward: -10.180000
+
+Starting epoch 240....
+Success rate: 18 / 100
+Avg. Reward: -12.615000
+
+Starting epoch 241....
+Success rate: 16 / 100
+Avg. Reward: -12.920000
+
+Starting epoch 242....
+Success rate: 19 / 100
+Avg. Reward: -14.335000
+
+Starting epoch 243....
+Success rate: 12 / 100
+Avg. Reward: -27.395000
+
+Starting epoch 244....
+Success rate: 13 / 100
+Avg. Reward: -14.315000
+
+Starting epoch 245....
+Success rate: 10 / 100
+Avg. Reward: -20.310000
+
+Starting epoch 246....
+Success rate: 18 / 100
+Avg. Reward: -10.750000
+
+Starting epoch 247....
+Success rate: 14 / 100
+Avg. Reward: -15.080000
+
+Starting epoch 248....
+Success rate: 14 / 100
+Avg. Reward: -15.080000
+
+Starting epoch 249....
+Success rate: 15 / 100
+Avg. Reward: -16.710000
+
+Starting epoch 250....
+Success rate: 15 / 100
+Avg. Reward: -9.390000
+
+Starting epoch 251....
+Success rate: 14 / 100
+Avg. Reward: -18.780000
+
+Starting epoch 252....
+Success rate: 16 / 100
+Avg. Reward: -6.470000
+
+Starting epoch 253....
+Success rate: 16 / 100
+Avg. Reward: -7.430000
+
+Starting epoch 254....
+Success rate: 18 / 100
+Avg. Reward: -12.620000
+
+Starting epoch 255....
+Success rate: 21 / 100
+Avg. Reward: -10.260000
+
+Starting epoch 256....
+Success rate: 21 / 100
+Avg. Reward: -13.970000
+
+Starting epoch 257....
+Success rate: 11 / 100
+Avg. Reward: -32.180000
+
+Starting epoch 258....
+Success rate: 13 / 100
+Avg. Reward: -34.560000
+
+Starting epoch 259....
+Success rate: 20 / 100
+Avg. Reward: -19.685000
+
+Starting epoch 260....
+Success rate: 21 / 100
+Avg. Reward: -14.945000
+
+Starting epoch 261....
+Success rate: 17 / 100
+Avg. Reward: -20.175000
+
+Starting epoch 262....
+Success rate: 20 / 100
+Avg. Reward: -20.605000
+
+Starting epoch 263....
+Success rate: 14 / 100
+Avg. Reward: -27.945000
+
+Starting epoch 264....
+Success rate: 17 / 100
+Avg. Reward: -22.910000
+
+Starting epoch 265....
+Success rate: 12 / 100
+Avg. Reward: -26.435000
+
+Starting epoch 266....
+Success rate: 13 / 100
+Avg. Reward: -17.080000
+
+Starting epoch 267....
+Success rate: 13 / 100
+Avg. Reward: -30.875000
+
+Starting epoch 268....
+Success rate: 22 / 100
+Avg. Reward: -14.850000
+
+Starting epoch 269....
+Success rate: 13 / 100
+Avg. Reward: -26.280000
+
+Starting epoch 270....
+Success rate: 23 / 100
+Avg. Reward: -14.610000
+
+Starting epoch 271....
+Success rate: 15 / 100
+Avg. Reward: -21.405000
+
+Starting epoch 272....
+Success rate: 17 / 100
+Avg. Reward: -23.880000
+
+Starting epoch 273....
+Success rate: 13 / 100
+Avg. Reward: -19.860000
+
+Starting epoch 274....
+Success rate: 19 / 100
+Avg. Reward: -20.760000
+
+Starting epoch 275....
+Success rate: 21 / 100
+Avg. Reward: -7.520000
+
+Starting epoch 276....
+Success rate: 19 / 100
+Avg. Reward: -12.415000
+
+Starting epoch 277....
+Success rate: 17 / 100
+Avg. Reward: -14.600000
+
+Starting epoch 278....
+Success rate: 15 / 100
+Avg. Reward: -22.320000
+
+Starting epoch 279....
+Success rate: 25 / 100
+Avg. Reward: -2.285000
+
+Starting epoch 280....
+Success rate: 21 / 100
+Avg. Reward: -15.815000
+
+Starting epoch 281....
+Success rate: 9 / 100
+Avg. Reward: -27.830000
+
+Starting epoch 282....
+Success rate: 20 / 100
+Avg. Reward: -15.020000
+
+Starting epoch 283....
+Success rate: 10 / 100
+Avg. Reward: -23.050000
+
+Starting epoch 284....
+Success rate: 17 / 100
+Avg. Reward: -14.605000
+
+Starting epoch 285....
+Success rate: 11 / 100
+Avg. Reward: -21.975000
+
+Starting epoch 286....
+Success rate: 22 / 100
+Avg. Reward: -17.495000
+
+Starting epoch 287....
+Success rate: 24 / 100
+Avg. Reward: -0.605000
+
+Starting epoch 288....
+Success rate: 15 / 100
+Avg. Reward: -18.565000
+
+Starting epoch 289....
+Success rate: 10 / 100
+Avg. Reward: -24.910000
+
+Starting epoch 290....
+Success rate: 16 / 100
+Avg. Reward: -19.330000
+
+Starting epoch 291....
+Success rate: 18 / 100
+Avg. Reward: -13.545000
+
+Starting epoch 292....
+Success rate: 14 / 100
+Avg. Reward: -19.675000
+
+Starting epoch 293....
+Success rate: 13 / 100
+Avg. Reward: -21.675000
+
+Starting epoch 294....
+Success rate: 14 / 100
+Avg. Reward: -14.110000
+
+Starting epoch 295....
+Success rate: 16 / 100
+Avg. Reward: -22.155000
+
+Starting epoch 296....
+Success rate: 16 / 100
+Avg. Reward: -13.815000
+
+Starting epoch 297....
+Success rate: 21 / 100
+Avg. Reward: -8.435000
+
+Starting epoch 298....
+Success rate: 14 / 100
+Avg. Reward: -17.790000
+
+Starting epoch 299....
+Success rate: 22 / 100
+Avg. Reward: -5.515000
+
+Starting epoch 300....
+Success rate: 15 / 100
+Avg. Reward: -13.030000
+
+Starting epoch 301....
+Success rate: 16 / 100
+Avg. Reward: -13.855000
+
+Starting epoch 302....
+Success rate: 20 / 100
+Avg. Reward: -18.735000
+
+Starting epoch 303....
+Success rate: 15 / 100
+Avg. Reward: -12.135000
+
+Starting epoch 304....
+Success rate: 19 / 100
+Avg. Reward: -17.070000
+
+Starting epoch 305....
+Success rate: 17 / 100
+Avg. Reward: -22.830000
+
+Starting epoch 306....
+Success rate: 19 / 100
+Avg. Reward: -14.275000
+
+Starting epoch 307....
+Success rate: 16 / 100
+Avg. Reward: -21.195000
+
+Starting epoch 308....
+Success rate: 21 / 100
+Avg. Reward: -16.770000
+
+Starting epoch 309....
+Success rate: 20 / 100
+Avg. Reward: -16.890000
+
+Starting epoch 310....
+Success rate: 13 / 100
+Avg. Reward: -23.490000
+
+Starting epoch 311....
+Success rate: 18 / 100
+Avg. Reward: -8.915000
+
+Starting epoch 312....
+Success rate: 19 / 100
+Avg. Reward: -16.110000
+
+Starting epoch 313....
+Success rate: 21 / 100
+Avg. Reward: -2.025000
+
+Starting epoch 314....
+Success rate: 16 / 100
+Avg. Reward: -24.915000
+
+Starting epoch 315....
+Success rate: 21 / 100
+Avg. Reward: -11.220000
+
+Starting epoch 316....
+Success rate: 13 / 100
+Avg. Reward: -30.920000
+
+Starting epoch 317....
+Success rate: 19 / 100
+Avg. Reward: -6.885000
+
+Starting epoch 318....
+Success rate: 17 / 100
+Avg. Reward: -20.165000
+
+Starting epoch 319....
+Success rate: 21 / 100
+Avg. Reward: -16.775000
+
+Starting epoch 320....
+Success rate: 14 / 100
+Avg. Reward: -21.500000
+
+Starting epoch 321....
+Success rate: 15 / 100
+Avg. Reward: -13.045000
+
+Starting epoch 322....
+Success rate: 19 / 100
+Avg. Reward: -24.450000
+
+Starting epoch 323....
+Success rate: 11 / 100
+Avg. Reward: -22.925000
+
+Starting epoch 324....
+Success rate: 17 / 100
+Avg. Reward: -18.260000
+
+Starting epoch 325....
+Success rate: 15 / 100
+Avg. Reward: -23.200000
+
+Starting epoch 326....
+Success rate: 18 / 100
+Avg. Reward: -10.780000
+
+Starting epoch 327....
+Success rate: 16 / 100
+Avg. Reward: -13.815000
+
+Starting epoch 328....
+Success rate: 13 / 100
+Avg. Reward: -29.085000
+
+Starting epoch 329....
+Success rate: 13 / 100
+Avg. Reward: -21.655000
+
+Starting epoch 330....
+Success rate: 16 / 100
+Avg. Reward: -23.985000
+
+Starting epoch 331....
+Success rate: 22 / 100
+Avg. Reward: -13.845000
+
+Starting epoch 332....
+Success rate: 19 / 100
+Avg. Reward: -14.315000
+
+Starting epoch 333....
+Success rate: 14 / 100
+Avg. Reward: -24.295000
+
+Starting epoch 334....
+Success rate: 18 / 100
+Avg. Reward: -20.005000
+
+Starting epoch 335....
+Success rate: 18 / 100
+Avg. Reward: -10.725000
+
+Starting epoch 336....
+Success rate: 14 / 100
+Avg. Reward: -25.250000
+
+Starting epoch 337....
+Success rate: 19 / 100
+Avg. Reward: -22.550000
+
+Starting epoch 338....
+Success rate: 18 / 100
+Avg. Reward: -16.305000
+
+Starting epoch 339....
+Success rate: 16 / 100
+Avg. Reward: -15.650000
+
+Starting epoch 340....
+Success rate: 21 / 100
+Avg. Reward: -12.140000
+
+Starting epoch 341....
+Success rate: 18 / 100
+Avg. Reward: -12.570000
+
+Starting epoch 342....
+Success rate: 18 / 100
+Avg. Reward: -15.370000
+
+Starting epoch 343....
+Success rate: 24 / 100
+Avg. Reward: -9.815000
+
+Starting epoch 344....
+Success rate: 19 / 100
+Avg. Reward: -18.885000
+
+Starting epoch 345....
+Success rate: 25 / 100
+Avg. Reward: -7.855000
+
+Starting epoch 346....
+Success rate: 16 / 100
+Avg. Reward: -21.235000
+
+Starting epoch 347....
+Success rate: 15 / 100
+Avg. Reward: -17.695000
+
+Starting epoch 348....
+Success rate: 18 / 100
+Avg. Reward: -13.515000
+
+Starting epoch 349....
+Success rate: 24 / 100
+Avg. Reward: -5.265000
+
+Starting epoch 350....
+Success rate: 17 / 100
+Avg. Reward: -21.945000
+
+Starting epoch 351....
+Success rate: 19 / 100
+Avg. Reward: -26.270000
+
+Starting epoch 352....
+Success rate: 18 / 100
+Avg. Reward: -12.580000
+
+Starting epoch 353....
+Success rate: 20 / 100
+Avg. Reward: -12.300000
+
+Starting epoch 354....
+Success rate: 11 / 100
+Avg. Reward: -19.235000
+
+Starting epoch 355....
+Success rate: 22 / 100
+Avg. Reward: -6.445000
+
+Starting epoch 356....
+Success rate: 13 / 100
+Avg. Reward: -17.050000
+
+Starting epoch 357....
+Success rate: 13 / 100
+Avg. Reward: -14.325000
+
+Starting epoch 358....
+Success rate: 23 / 100
+Avg. Reward: -0.780000
+
+Starting epoch 359....
+Success rate: 11 / 100
+Avg. Reward: -27.505000
+
+Starting epoch 360....
+Success rate: 20 / 100
+Avg. Reward: -10.490000
+
+Starting epoch 361....
+Success rate: 15 / 100
+Avg. Reward: -17.725000
+
+Starting epoch 362....
+Success rate: 19 / 100
+Avg. Reward: -14.305000
+
+Starting epoch 363....
+Success rate: 19 / 100
+Avg. Reward: -10.570000
+
+Starting epoch 364....
+Success rate: 20 / 100
+Avg. Reward: -8.600000
+
+Starting epoch 365....
+Success rate: 13 / 100
+Avg. Reward: -15.215000
+
+Starting epoch 366....
+Success rate: 25 / 100
+Avg. Reward: -2.290000
+
+Starting epoch 367....
+Success rate: 24 / 100
+Avg. Reward: -8.040000
+
+Starting epoch 368....
+Success rate: 14 / 100
+Avg. Reward: -16.895000
+
+Starting epoch 369....
+Success rate: 17 / 100
+Avg. Reward: -16.490000
+
+Starting epoch 370....
+Success rate: 15 / 100
+Avg. Reward: -23.290000
+
+Starting epoch 371....
+Success rate: 21 / 100
+Avg. Reward: -2.025000
+
+Starting epoch 372....
+Success rate: 19 / 100
+Avg. Reward: -11.540000
+
+Starting epoch 373....
+Success rate: 25 / 100
+Avg. Reward: -0.470000
+
+Starting epoch 374....
+Success rate: 25 / 100
+Avg. Reward: -3.240000
+
+Starting epoch 375....
+Success rate: 14 / 100
+Avg. Reward: -16.930000
+
+Starting epoch 376....
+Success rate: 18 / 100
+Avg. Reward: -13.565000
+
+Starting epoch 377....
+Success rate: 10 / 100
+Avg. Reward: -26.790000
+
+Starting epoch 378....
+Success rate: 21 / 100
+Avg. Reward: -13.090000
+
+Starting epoch 379....
+Success rate: 16 / 100
+Avg. Reward: -17.570000
+
+Starting epoch 380....
+Success rate: 25 / 100
+Avg. Reward: -7.885000
+
+Starting epoch 381....
+Success rate: 17 / 100
+Avg. Reward: -8.120000
+
+Starting epoch 382....
+Success rate: 16 / 100
+Avg. Reward: -22.205000
+
+Starting epoch 383....
+Success rate: 23 / 100
+Avg. Reward: -7.365000
+
+Starting epoch 384....
+Success rate: 13 / 100
+Avg. Reward: -15.235000
+
+Starting epoch 385....
+Success rate: 17 / 100
+Avg. Reward: -19.200000
+
+Starting epoch 386....
+Success rate: 17 / 100
+Avg. Reward: -17.385000
+
+Starting epoch 387....
+Success rate: 22 / 100
+Avg. Reward: -10.110000
+
+Starting epoch 388....
+Success rate: 20 / 100
+Avg. Reward: -10.455000
+
+Starting epoch 389....
+Success rate: 20 / 100
+Avg. Reward: -16.925000
+
+Starting epoch 390....
+Success rate: 12 / 100
+Avg. Reward: -22.735000
+
+Starting epoch 391....
+Success rate: 15 / 100
+Avg. Reward: -16.765000
+
+Starting epoch 392....
+Success rate: 14 / 100
+Avg. Reward: -18.735000
+
+Starting epoch 393....
+Success rate: 21 / 100
+Avg. Reward: -11.275000
+
+Starting epoch 394....
+Success rate: 24 / 100
+Avg. Reward: -7.090000
+
+Starting epoch 395....
+Success rate: 18 / 100
+Avg. Reward: -7.960000
+
+Starting epoch 396....
+Success rate: 24 / 100
+Avg. Reward: 0.270000
+
+Starting epoch 397....
+Success rate: 15 / 100
+Avg. Reward: -18.605000
+
+Starting epoch 398....
+Success rate: 19 / 100
+Avg. Reward: -7.935000
+
+Starting epoch 399....
+Success rate: 19 / 100
+Avg. Reward: -6.930000
+
+Starting epoch 400....
+Success rate: 24 / 100
+Avg. Reward: -4.335000
+
+Starting epoch 401....
+Success rate: 20 / 100
+Avg. Reward: -15.075000
+
+Starting epoch 402....
+Success rate: 17 / 100
+Avg. Reward: -16.455000
+
+Starting epoch 403....
+Success rate: 22 / 100
+Avg. Reward: -19.430000
+
+Starting epoch 404....
+Success rate: 27 / 100
+Avg. Reward: -6.675000
+
+Starting epoch 405....
+Success rate: 17 / 100
+Avg. Reward: -18.360000
+
+Starting epoch 406....
+Success rate: 25 / 100
+Avg. Reward: -2.340000
+
+Starting epoch 407....
+Success rate: 20 / 100
+Avg. Reward: -11.365000
+
+Starting epoch 408....
+Success rate: 18 / 100
+Avg. Reward: -14.445000
+
+Starting epoch 409....
+Success rate: 19 / 100
+Avg. Reward: -19.800000
+
+Starting epoch 410....
+Success rate: 15 / 100
+Avg. Reward: -14.005000
+
+Starting epoch 411....
+Success rate: 23 / 100
+Avg. Reward: -5.350000
+
+Starting epoch 412....
+Success rate: 23 / 100
+Avg. Reward: -3.525000
+
+Starting epoch 413....
+Success rate: 16 / 100
+Avg. Reward: -6.430000
+
+Starting epoch 414....
+Success rate: 22 / 100
+Avg. Reward: -9.210000
+
+Starting epoch 415....
+Success rate: 23 / 100
+Avg. Reward: -2.620000
+
+Starting epoch 416....
+Success rate: 17 / 100
+Avg. Reward: -10.910000
+
+Starting epoch 417....
+Success rate: 24 / 100
+Avg. Reward: -5.215000
+
+Starting epoch 418....
+Success rate: 18 / 100
+Avg. Reward: -15.380000
+
+Starting epoch 419....
+Success rate: 12 / 100
+Avg. Reward: -25.550000
+
+Starting epoch 420....
+Success rate: 20 / 100
+Avg. Reward: -5.845000
+
+Starting epoch 421....
+Success rate: 20 / 100
+Avg. Reward: -7.660000
+
+Starting epoch 422....
+Success rate: 25 / 100
+Avg. Reward: -4.180000
+
+Starting epoch 423....
+Success rate: 18 / 100
+Avg. Reward: -15.345000
+
+Starting epoch 424....
+Success rate: 19 / 100
+Avg. Reward: -11.565000
+
+Starting epoch 425....
+Success rate: 26 / 100
+Avg. Reward: 2.465000
+
+Starting epoch 426....
+Success rate: 23 / 100
+Avg. Reward: -5.435000
+
+Starting epoch 427....
+Success rate: 24 / 100
+Avg. Reward: -4.325000
+
+Starting epoch 428....
+Success rate: 17 / 100
+Avg. Reward: -20.165000
+
+Starting epoch 429....
+Success rate: 15 / 100
+Avg. Reward: -16.715000
+
+Starting epoch 430....
+Success rate: 16 / 100
+Avg. Reward: -15.690000
+
+Starting epoch 431....
+Success rate: 19 / 100
+Avg. Reward: -15.225000
+
+Starting epoch 432....
+Success rate: 17 / 100
+Avg. Reward: -11.825000
+
+Starting epoch 433....
+Success rate: 22 / 100
+Avg. Reward: -7.385000
+
+Starting epoch 434....
+Success rate: 15 / 100
+Avg. Reward: -25.045000
+
+Starting epoch 435....
+Success rate: 12 / 100
+Avg. Reward: -25.525000
+
+Starting epoch 436....
+Success rate: 21 / 100
+Avg. Reward: -9.305000
+
+Starting epoch 437....
+Success rate: 15 / 100
+Avg. Reward: -20.475000
+
+Starting epoch 438....
+Success rate: 22 / 100
+Avg. Reward: -0.015000
+
+Starting epoch 439....
+Success rate: 13 / 100
+Avg. Reward: -18.895000
+
+Starting epoch 440....
+Success rate: 18 / 100
+Avg. Reward: -14.440000
+
+Starting epoch 441....
+Success rate: 20 / 100
+Avg. Reward: -6.775000
+
+Starting epoch 442....
+Success rate: 24 / 100
+Avg. Reward: -0.650000
+
+Starting epoch 443....
+Success rate: 22 / 100
+Avg. Reward: -11.010000
+
+Starting epoch 444....
+Success rate: 24 / 100
+Avg. Reward: -0.645000
+
+Starting epoch 445....
+Success rate: 14 / 100
+Avg. Reward: -15.005000
+
+Starting epoch 446....
+Success rate: 22 / 100
+Avg. Reward: -5.505000
+
+Starting epoch 447....
+Success rate: 19 / 100
+Avg. Reward: -15.160000
+
+Starting epoch 448....
+Success rate: 14 / 100
+Avg. Reward: -14.135000
+
+Starting epoch 449....
+Success rate: 17 / 100
+Avg. Reward: -12.750000
+
+Starting epoch 450....
+Success rate: 18 / 100
+Avg. Reward: -16.265000
+
+Starting epoch 451....
+Success rate: 24 / 100
+Avg. Reward: 0.355000
+
+Starting epoch 452....
+Success rate: 25 / 100
+Avg. Reward: 0.510000
+
+Starting epoch 453....
+Success rate: 14 / 100
+Avg. Reward: -15.060000
+
+Starting epoch 454....
+Success rate: 19 / 100
+Avg. Reward: -7.875000
+
+Starting epoch 455....
+Success rate: 15 / 100
+Avg. Reward: -17.640000
+
+Starting epoch 456....
+Success rate: 21 / 100
+Avg. Reward: -5.660000
+
+Starting epoch 457....
+Success rate: 19 / 100
+Avg. Reward: -7.820000
+
+Starting epoch 458....
+Success rate: 20 / 100
+Avg. Reward: -12.330000
+
+Starting epoch 459....
+Success rate: 19 / 100
+Avg. Reward: -5.060000
+
+Starting epoch 460....
+Success rate: 17 / 100
+Avg. Reward: -12.820000
+
+Starting epoch 461....
+Success rate: 20 / 100
+Avg. Reward: -10.440000
+
+Starting epoch 462....
+Success rate: 20 / 100
+Avg. Reward: -4.880000
+
+Starting epoch 463....
+Success rate: 19 / 100
+Avg. Reward: -15.180000
+
+Starting epoch 464....
+Success rate: 14 / 100
+Avg. Reward: -13.215000
+
+Starting epoch 465....
+Success rate: 24 / 100
+Avg. Reward: -7.995000
+
+Starting epoch 466....
+Success rate: 22 / 100
+Avg. Reward: -0.980000
+
+Starting epoch 467....
+Success rate: 27 / 100
+Avg. Reward: 3.505000
+
+Starting epoch 468....
+Success rate: 18 / 100
+Avg. Reward: -7.085000
+
+Starting epoch 469....
+Success rate: 23 / 100
+Avg. Reward: -6.325000
+
+Starting epoch 470....
+Success rate: 18 / 100
+Avg. Reward: -11.680000
+
+Starting epoch 471....
+Success rate: 20 / 100
+Avg. Reward: -13.200000
+
+Starting epoch 472....
+Success rate: 19 / 100
+Avg. Reward: -17.105000
+
+Starting epoch 473....
+Success rate: 21 / 100
+Avg. Reward: -6.600000
+
+Starting epoch 474....
+Success rate: 10 / 100
+Avg. Reward: -23.035000
+
+Starting epoch 475....
+Success rate: 16 / 100
+Avg. Reward: -11.115000
+
+Starting epoch 476....
+Success rate: 18 / 100
+Avg. Reward: -11.685000
+
+Starting epoch 477....
+Success rate: 23 / 100
+Avg. Reward: 1.100000
+
+Starting epoch 478....
+Success rate: 22 / 100
+Avg. Reward: -2.775000
+
+Starting epoch 479....
+Success rate: 28 / 100
+Avg. Reward: -1.800000
+
+Starting epoch 480....
+Success rate: 19 / 100
+Avg. Reward: -10.575000
+
+Starting epoch 481....
+Success rate: 16 / 100
+Avg. Reward: -11.965000
+
+Starting epoch 482....
+Success rate: 22 / 100
+Avg. Reward: -10.160000
+
+Starting epoch 483....
+Success rate: 18 / 100
+Avg. Reward: -8.935000
+
+Starting epoch 484....
+Success rate: 20 / 100
+Avg. Reward: -9.540000
+
+Starting epoch 485....
+Success rate: 25 / 100
+Avg. Reward: 1.395000
+
+Starting epoch 486....
+Success rate: 19 / 100
+Avg. Reward: -12.495000
+
+Starting epoch 487....
+Success rate: 19 / 100
+Avg. Reward: -13.420000
+
+Starting epoch 488....
+Success rate: 17 / 100
+Avg. Reward: -12.810000
+
+Starting epoch 489....
+Success rate: 20 / 100
+Avg. Reward: -8.630000
+
+Starting epoch 490....
+Success rate: 17 / 100
+Avg. Reward: -16.435000
+
+Starting epoch 491....
+Success rate: 18 / 100
+Avg. Reward: -18.140000
+
+Starting epoch 492....
+Success rate: 15 / 100
+Avg. Reward: -15.845000
+
+Starting epoch 493....
+Success rate: 21 / 100
+Avg. Reward: -8.485000
+
+Starting epoch 494....
+Success rate: 23 / 100
+Avg. Reward: -4.420000
+
+Starting epoch 495....
+Success rate: 23 / 100
+Avg. Reward: -7.185000
+
+Starting epoch 496....
+Success rate: 17 / 100
+Avg. Reward: -11.860000
+
+Starting epoch 497....
+Success rate: 19 / 100
+Avg. Reward: -6.935000
+
+Starting epoch 498....
+Success rate: 23 / 100
+Avg. Reward: -5.390000
+
+Starting epoch 499....
+Success rate: 17 / 100
+Avg. Reward: -11.840000
+
+Learning Time: 1762.070516

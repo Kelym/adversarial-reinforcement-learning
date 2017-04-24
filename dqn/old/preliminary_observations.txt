@@ -1,0 +1,76 @@
+lr = 0.01, nEpochs=50, mini_batch_size=10, nSteps=200, nTestMazes=100
+trap_reward = -100, goal_reward = 100, move_reward = -0.5
+trap_prob = 1/3
+
+-initial: 
+
+Starting epoch 0....
+Success rate: 15 / 100
+Avg. Reward: -47.615000
+
+
+-final:
+
+Starting epoch 49....
+Success rate: 19 / 100
+Avg. Reward: 8.700000
+
+-comments:
+	-wildly fluctuating; suggestion: lower learning rate to 0.001***didn't help; worse
+	-mostly failing because of taking too many steps; suggestion: encode history into state
+	-suggestion: ensure maze is valid?
+
+--------------------------------------------------------------------
+
+lr = 0.01, nEpochs=50, mini_batch_size=10, nSteps=200, nTestMazes=100
+trap_reward = -100, goal_reward = 100, ****move_reward = -5****
+trap_prob = 1/3
+
+-initial: 
+
+Starting epoch 0....
+Success rate: 6 / 100
+Avg. Reward: -92.850000
+
+-final:
+
+Starting epoch 49....
+Success rate: 17 / 100
+Avg. Reward: -57.050000
+
+
+-comments:
+	-performance faltered when penalty for number of moves increased
+	-wildly fluctuating; suggestion: lower learning rate to 0.001***didn't help; worse
+	-mostly failing because of taking too many steps; suggestion: encode history into state
+	-suggestion: ensure maze is valid?
+
+--------------------------------------------------------------------
+
+lr = 0.01, nEpochs=50, mini_batch_size=50, nSteps=1000, nTestMazes=100
+trap_reward = -100, goal_reward = 100, move_reward = -0.5
+trap_prob = 1/3
+
+-initial: 
+
+Starting epoch 0....
+Success rate: 6 / 100
+Avg. Reward: -87.740000
+
+
+-final:
+
+Starting epoch 49....
+Success rate: 19 / 100
+Avg. Reward: 8.700000
+
+-peak:
+
+Starting epoch 37....
+Success rate: 26 / 100
+Avg. Reward: 19.935000
+
+-comments:
+	-wildly fluctuating; suggestion: lower learning rate
+	-mostly failing because of taking too many steps; suggestion: encode history into state
+	-suggestion: ensure maze is valid?
