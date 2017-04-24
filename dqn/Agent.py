@@ -22,6 +22,11 @@ from torch.autograd import Variable as var
 import torch.nn.functional as F
 import torchvision.transforms as T
 
+if torch.cuda.is_available():
+    import torch.backends.cudnn as cudnn
+    torch.set_default_tensor_type('torch.cuda.FloatTensor')
+    cudnn.benchmark = True
+
 import Environment
 
 Transition = namedtuple('Transition',
@@ -71,24 +76,29 @@ class DQN(nn.Module):
 		x = F.relu(self.fc1(x.view(x.size(0), -1)))
 		#print(x.data.size())
 		#x = F.relu(self.fc2(x))
-		return x
-		#return self.softmax(x)
+		#return x
+		return self.softmax(x)
 
 class AgentQLearn():
 	def __init__(self, env, curiosity=1, learning_rate=0.01, discount_rate = 0.9):
 		self.env = env
-		self.explore_chance = curiosity
+		self.curiosity = curiosity
 		self.discount_rate = discount_rate
 
 		# Initializes DQN and replay memory
 		self.mem = ReplayMemory(capacity=10000)
 		self.net = DQN(self.env.dims())
+		if torch.cuda.is_available():
+			self.net = self.net.cuda()
 
 		# using Huber Loss so that we're not as sensitive to outliers
 		self.criterion = nn.SmoothL1Loss()
-		self.optimizer = torch.optim.SGD(self.net.parameters(), lr=learning_rate)
+		if torch.cuda.is_available():
+			self.criterion = self.criterion.cuda()
+		#self.optimizer = torch.optim.SGD(self.net.parameters(), lr=learning_rate)
+		self.optimizer = torch.optim.SGD(self.net.parameters(), lr=learning_rate, momentum=0.9, weight_decay=1E-4)
 
-	def learn(self, nEpochs=50, mini_batch_size=50, nSteps=1000, test=True, nTestMazes=100):
+	def learn(self, nEpochs=3000, mini_batch_size=50, nSteps=1000, test=True, nTestMazes=100, end_curiosity=0.1):
 		avg_rewards = []
 		success_rates = []
 
@@ -96,7 +106,11 @@ class AgentQLearn():
 		for epoch in range(nEpochs):
 			self.env = self.env.new_maze()
 			state = self.env.observe()
-			
+
+			if (epoch + 1) % 50 == 0:
+				self.curiosity = max(self.curiosity-0.1, end_curiosity)
+				
+
 			'''
 			initial_state = state.copy()
 			for flag in initial_state:
@@ -165,12 +179,21 @@ class AgentQLearn():
 
 					# Forward + Backward + Optimize
 					self.net.zero_grad()
+					cur_input = to_var(state_batch, volatile=False)
+
+					if torch.cuda.is_available():
+						cur_input = cur_input.cuda()
+
 					# feeds-forward state batch and collects the action outputs corresponding to the action batch
-					q_values = self.net(to_var(state_batch, volatile=False)).gather(1,to_var(action_batch).long().view(-1, 1))
-					
+					q_values = self.net(cur_input).gather(1,to_var(action_batch).long().view(-1, 1))
+
 					# Make volatile so that computational graph isn't affected
 					# by this batch of inputs
-					next_max_q_values = self.net(to_var(next_state_batch, volatile=True)).max(1)[0].float()
+					next_input = to_var(next_state_batch, volatile=True)
+					if torch.cuda.is_available():
+						next_input = next_input.cuda()
+					
+					next_max_q_values = self.net(next_input).max(1)[0].float()
 
 					'''
 					print(next_q_values.data)
@@ -215,6 +238,8 @@ class AgentQLearn():
 		final_q_values = self.net(to_var(initial_state, volatile=True))
 		print(final_q_values)
 		'''
+	def save_model(self,fname):
+		torch.save(self.net.cpu().state_dict(),fname)
 
 	# state is state as given by env; not necessarily in suitable format for network input
 	def policy(self,state,can_explore=True):
@@ -225,6 +250,9 @@ class AgentQLearn():
 			# Brackets around state give it batch dimension (of size 1)
 			# q_values = self.net(batch_to_input([state]))
 			v = to_var(state, volatile=True)
+			if torch.cuda.is_available():
+				v = v.cuda()
+
 			q_values = self.net(v)
 			# chooses best action
 			action = q_values.data.max(1)[1][0,0]
@@ -232,7 +260,7 @@ class AgentQLearn():
 		return int(action)
 
 	def explore(self):
-		return random.random() < self.explore_chance
+		return random.random() < self.curiosity
 
 	def test(self, nMazes, debug=False):
 		avg_reward = 0.0
