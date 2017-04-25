@@ -9,8 +9,8 @@ import sys
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 
-import Environment
-import Agent
+import Environment_h
+import Agent_h
 
 '''
 learning_rate = 0.9
@@ -33,9 +33,9 @@ def main():
 
 	#sys.stdout = open(record_file, 'w')
 
-	env = Environment.Toy(dimensions,trap_prob)
+	env = Environment_h.Toy(dimensions,trap_prob)
 	env.debug = 1
-	agent = Agent.AgentQLearn(env,curiosity=1)
+	agent = Agent_h.AgentQLearn(env,curiosity=1)
 	#print('Loading model weights from %s' % in_model_file)
 	#agent.load_model(in_model_file)
 
@@ -47,7 +47,7 @@ def main():
 
 	#results = ([1,2,3],[0.25,0.5,0.75])
 
-	create_plots(results,'1000_normal')
+	create_plots(results,'history_1000')
 
 	#sys.stdout.close()
 

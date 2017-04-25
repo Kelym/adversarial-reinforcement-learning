@@ -57,12 +57,12 @@ class DQN(nn.Module):
 	def __init__(self, dims):
 		super(DQN, self).__init__()
 		# first convolutional layer designed to capture information about neighbors
-		self.conv1 = nn.Conv2d(3, 4, kernel_size=3, stride=1, padding=1)
+		self.conv1 = nn.Conv2d(4, 8, kernel_size=3, stride=1, padding=1)
 		# good practice to use batch normalization before applying non-linear ReLu
-		self.bn1 = nn.BatchNorm2d(4)
+		self.bn1 = nn.BatchNorm2d(8)
 		x,y = dims
 		#self.fc1 = nn.Linear(16*x*y, 16)
-		self.fc1 = nn.Linear(4*x*y, 4)
+		self.fc1 = nn.Linear(8*x*y, 4)
 
 		# four output neurons correspond to the four possible actions
 		self.fc2 = nn.Linear(16,4)
@@ -108,7 +108,7 @@ class AgentQLearn():
 			state = self.env.observe()
 
 			
-			if (epoch + 100) % 150 == 0:
+			if (epoch + 100) % 50 == 0:
 				self.curiosity = max(self.curiosity-0.1, end_curiosity)
 			
 
@@ -143,7 +143,7 @@ class AgentQLearn():
 				# state is terminal if trap or goal
 				# note: for learning purposes, learning still happens on same maze
 				# after trap is encountered
-				isNotTerminal = not (self.env.isTrap(square) or self.env.isGoal(square))
+				isNotTerminal = not (self.env.isTrap(square) or self.env.isGoal(square) or self.env.isExplored(square))
 				self.mem.push(state,action,next_state,isNotTerminal,reward)
 
 				'''
@@ -306,7 +306,7 @@ class AgentQLearn():
 					nSuccesses += 1
 					break
 
-				if env.isTrap(square):
+				if env.isTrap(square) or env.isExplored(square):
 					break
 
 				state = env.observe()
